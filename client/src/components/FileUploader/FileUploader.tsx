@@ -36,6 +36,7 @@ const SERVER_HOST = "http://localhost:8000/"
 
 export default function FileUploader() {
     const [files, setFiles] = useState<any[]>([]);
+    const [results, setResults] = useState<string[]>([]);
     const {getRootProps, getInputProps} = useDropzone({
         accept: {
             'image/*': []
@@ -48,10 +49,13 @@ export default function FileUploader() {
             const formData = new FormData();
             formData.append('file', acceptedFiles[0]);
 
-            await fetch(`${SERVER_HOST}upload`, {
+            fetch(`${SERVER_HOST}upload`, {
                 method: 'POST',
                 body: formData
             })
+                .then(response => response.blob())
+                .then(blob => setResults(results.concat(URL.createObjectURL(blob))))
+
         }
     });
 
@@ -86,6 +90,11 @@ export default function FileUploader() {
             <aside style={thumbsContainer}>
                 {thumbs}
             </aside>
+            <div style={{maxHeight: "300px"}}>
+                {results.map(result => (
+                    <img src={result} alt={result} key={result}/>
+                ))}
+            </div>
         </section>
     );
 }
