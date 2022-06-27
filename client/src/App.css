@@ -1,0 +1,17 @@
+.App {
+  display: flex;
+  justify-content: center;
+  max-width: 70vw;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+body {
+  background: #EFF2F5;
+}
