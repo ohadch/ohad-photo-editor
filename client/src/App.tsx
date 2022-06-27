@@ -1,11 +1,13 @@
 import './App.css'
-import FileUploader from "./components/FileUploader/FileUploader";
+import FileUploaderContainer from "./components/FileUploaderContainer/FileUploaderContainer";
 
 function App() {
   return (
     <div className="App">
-      <h1>Photo Editor</h1>
-      <FileUploader />
+        <div className={"content"}>
+            <h1>Cartoonizer</h1>
+            <FileUploaderContainer />
+        </div>
     </div>
   )
 }
