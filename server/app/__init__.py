@@ -1,7 +1,8 @@
 import logging
 import os
 import traceback
-import matplotlib.pyplot as plt
+
+import cv2
 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
@@ -43,7 +44,7 @@ def create_app(test_config=None):
                 editor = ImageEditor.from_file(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 cartoon_pic = editor.as_cartoon(k=8, remove_background=True)
                 cartoon_pic_path = os.path.join(app.config['UPLOAD_FOLDER'], 'cartoon_' + filename)
-                plt.imsave(cartoon_pic_path, cartoon_pic)
+                cv2.imwrite(cartoon_pic_path, cartoon_pic)
 
                 # Return the cartoon image as multipart
                 return send_file(cartoon_pic_path, mimetype='image/png', environ=request.environ)
