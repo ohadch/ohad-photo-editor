@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ohad-photo-editor-server-deployment
+  labels:
+      app: ohad-photo-editor-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ohad-photo-editor-server
+  template:
+    metadata:
+      labels:
+        app: ohad-photo-editor-server
+    spec:
+      containers:
+      - name: ohad-photo-editor-server
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 8000
+        env:
+          {{- range $key, $value := .Values.env }}
+          - name: {{ $key }}
+            value: {{ $value | quote }}
+          {{- end }}
