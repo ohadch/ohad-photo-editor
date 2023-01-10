@@ -1,0 +1,9 @@
+dependencies:
+- name: ohad-photo-editor-client
+  repository: file://../../client/helm
+  version: 0.0.1
+- name: ohad-photo-editor-server
+  repository: file://../../server/helm
+  version: 0.0.1
+digest: sha256:43175f584f1f4dbc6dd6974c009d557d0878889c01cab27ed9533d897b10790f
+generated: "2023-01-10T09:21:01.458943+02:00"

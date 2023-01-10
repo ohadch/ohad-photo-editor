@@ -1,0 +1,12 @@
+apiVersion: v2
+name: ohad-photo-editor
+version: 0.0.1
+description: A Helm chart for Ohad's photo editor
+
+dependencies:
+  - name: ohad-photo-editor-client
+    version: 0.0.1
+    repository: file://../../client/helm
+  - name: ohad-photo-editor-server
+    version: 0.0.1
+    repository: file://../../server/helm
