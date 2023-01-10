@@ -1,0 +1,4 @@
+image:
+  repository: localhost:5001/ohad-photo-editor-client
+  tag: latest
+  pullPolicy: IfNotPresent

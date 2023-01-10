@@ -28,3 +28,14 @@ cd frontend
 yarn
 yarn dev
 ```
+
+## Deployment
+
+### Local Kubernetes
+
+```shell
+make local-registry-up
+docker-compose build
+docker-compose push
+make up-k8s
+```
