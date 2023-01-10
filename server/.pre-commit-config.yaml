@@ -1,0 +1,50 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+    -   id: no-commit-to-branch
+        args: [--branch, development, --branch, master]
+    -   id: check-merge-conflict
+    -   id: debug-statements
+        language_version: python3.7
+    -   id: detect-aws-credentials
+    -   id: detect-private-key
+    -   id: check-json
+    -   id: end-of-file-fixer
+    -   id: mixed-line-ending
+    -   id: trailing-whitespace
+    -   id: requirements-txt-fixer
+-   repo: https://github.com/Lucas-C/pre-commit-hooks-safety
+    rev: v1.2.4
+    hooks:
+    -   id: python-safety-dependencies-check
+        stages: [manual]
+-   repo: https://github.com/PyCQA/bandit
+    rev: 1.7.3
+    hooks:
+    -   id: bandit
+        stages: [manual]
+-   repo: https://github.com/twu/skjold
+    rev: v0.4.1
+    hooks:
+    - id: skjold
+      name: "skjold: Auditing dependencies for known vulnerabilities."
+      entry: skjold audit
+      args: [-s, gemnasium, -s, pyup]
+      require_serial: true
+      language: python
+      language_version: python3.7
+      files: ^(requirements.*\.txt)$
+      stages: [manual]
+-   repo: https://github.com/hakancelik96/unimport
+    rev: 0.9.4
+    hooks:
+    - id: unimport
+      args: [-r, --include-star-import]
+      files: "\\.(py)$"
+      exclude: (__init__.py)
+-   repo: https://github.com/psf/black
+    rev: 22.1.0
+    hooks:
+    -   id: black
+        language_version: python3.7
