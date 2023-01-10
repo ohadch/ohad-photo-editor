@@ -10,7 +10,7 @@ RUN git config --global url."https://".insteadOf git://
 
 # Install dependencies
 COPY package.json .
-COPY package-lock.json .
+COPY yarn.lock .
 RUN yarn install
 
 # Copy app files

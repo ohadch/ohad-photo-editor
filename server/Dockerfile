@@ -1,4 +1,4 @@
-FROM python:3.7
+FROM python:3.9
 
 # Install dependencies
 RUN pip install --upgrade pip
@@ -8,6 +8,10 @@ COPY . /app
 
 # Set the working directory to /app
 WORKDIR /app
+
+# Prepare the environment
+RUN apt-get update -y
+RUN apt-get install ffmpeg libsm6 libxext6  -y
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
